@@ -2,6 +2,7 @@
 git ls-files \
   | grep -v 'pnpm-lock.yaml' \
   | grep -v '^scripts/icons/' \
+  | grep -v '^project.inlang/cache/' \
   | while IFS= read -r file; do
       printf -- '--- PATH: %s ---\n' "$file"
       cat -- "$file"
