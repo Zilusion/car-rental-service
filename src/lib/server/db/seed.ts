@@ -25,7 +25,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Кондиционер, Bluetooth, Подогрев зеркал',
-		imageUrl: '/images/cars/vw-polo-vi.webp'
+		imageUrl: '/images/cars/vw-polo-vi.webp' // есть
 	},
 	{
 		brand: 'Skoda',
@@ -39,7 +39,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Мультимедиа, Подогрев сидений, USB-зарядка',
-		imageUrl: '/images/cars/skoda-rapid.webp'
+		imageUrl: '/images/cars/skoda-rapid.webp' // есть
 	},
 	{
 		brand: 'KIA',
@@ -53,7 +53,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Климат-контроль, Камера заднего вида, Apple CarPlay',
-		imageUrl: '/images/cars/kia-rio-x.webp'
+		imageUrl: '/images/cars/kia-rio-x.webp' // есть
 	},
 	{
 		brand: 'Chery',
@@ -67,7 +67,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Парктроники, Круиз-контроль, Обогрев руля',
-		imageUrl: '/images/cars/chery-tiggo-4.webp'
+		imageUrl: '/images/cars/chery-tiggo-4.webp' // есть
 	},
 	{
 		brand: 'Chery',
@@ -81,7 +81,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Панорамная крыша, Камера 360, Беспроводная зарядка',
-		imageUrl: '/images/cars/chery-tiggo-4-pro.webp'
+		imageUrl: '/images/cars/chery-tiggo-4-pro.webp' // есть
 	},
 
 	// --- КОМФОРТ (21/2) ---
@@ -97,21 +97,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Двухзонный климат, Навигация, Удержание в полосе',
-		imageUrl: '/images/cars/nissan-qashqai.webp'
-	},
-	{
-		brand: 'Volkswagen',
-		model: 'Jetta VS5',
-		year: 2023,
-		pricePerDay: 297200,
-		category: 'passenger',
-		minAge: 21,
-		minWorkExperience: 2,
-		transmission: 'automatic',
-		fuelType: 'petrol',
-		seats: 5,
-		features: 'Адаптивный круиз, LED оптика, Цифровая приборка',
-		imageUrl: '/images/cars/jetta-vs5.webp'
+		imageUrl: '/images/cars/nissan-qashqai.webp' // есть
 	},
 	{
 		brand: 'Omoda',
@@ -125,7 +111,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Спортивные сиденья, Люк, Атмосферная подсветка',
-		imageUrl: '/images/cars/omoda-s5.webp'
+		imageUrl: '/images/cars/omoda-s5.webp' // есть
 	},
 	{
 		brand: 'Chery',
@@ -139,7 +125,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Кожаный салон, Электропривод багажника, Автозапуск',
-		imageUrl: '/images/cars/chery-tiggo-7-pro.webp'
+		imageUrl: '/images/cars/chery-tiggo-7-pro.webp' // есть
 	},
 	{
 		brand: 'Haval',
@@ -153,7 +139,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Проекция на стекло, Ассистент парковки, Android Auto',
-		imageUrl: '/images/cars/haval-jolion.webp'
+		imageUrl: '/images/cars/haval-jolion.webp' // есть
 	},
 	{
 		brand: 'Geely',
@@ -167,7 +153,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Большой багажник, Тихий салон, Климат-контроль',
-		imageUrl: '/images/cars/geely-emgrand.webp'
+		imageUrl: '/images/cars/geely-emgrand.webp' // есть
 	},
 	{
 		brand: 'Belgee',
@@ -181,7 +167,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Турбо-мотор, Спортивный режим, Панорама',
-		imageUrl: '/images/cars/belgee-x50.webp'
+		imageUrl: '/images/cars/belgee-x50.webp' // есть
 	},
 	{
 		brand: 'Geely',
@@ -195,7 +181,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Автопарковка, Видеорегистратор, Спортивный выхлоп',
-		imageUrl: '/images/cars/geely-coolray.webp'
+		imageUrl: '/images/cars/geely-coolray.webp' // есть
 	},
 
 	// --- ПРЕМИУМ / БИЗНЕС (24/4) ---
@@ -211,7 +197,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Премиум аудио Sony, Голосовое управление, Полный привод',
-		imageUrl: '/images/cars/exeed-lx-fl.webp'
+		imageUrl: '/images/cars/exeed-lx-fl.webp' // есть
 	},
 	{
 		brand: 'Exeed',
@@ -225,7 +211,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Двойные стекла, Ионизация воздуха, Face ID',
-		imageUrl: '/images/cars/exeed-lx.webp'
+		imageUrl: '/images/cars/exeed-lx.webp' // есть
 	},
 	{
 		brand: 'Toyota',
@@ -239,7 +225,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Легендарная надежность, Safety Sense, Off-road режим',
-		imageUrl: '/images/cars/toyota-rav4.webp'
+		imageUrl: '/images/cars/toyota-rav4.webp' // есть
 	},
 	{
 		brand: 'Omoda',
@@ -253,7 +239,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Футуристичный дизайн, Акустика, Вентиляция сидений',
-		imageUrl: '/images/cars/omoda-c5.webp'
+		imageUrl: '/images/cars/omoda-c5.webp' // есть
 	},
 
 	// --- ГРУЗОВЫЕ / СПЕЦ ---
@@ -290,12 +276,12 @@ const CARS_DATA = [
 		model: 'Atlant (Пассажирский)',
 		year: 2023,
 		pricePerDay: 480000,
-		category: 'cargo', // Технически в категорию "Фургоны" для удобства UI
+		category: 'cargo',
 		minAge: 25,
-		minWorkExperience: 5, // Для автобуса нужны права посерьезнее или опыт
+		minWorkExperience: 5,
 		transmission: 'manual',
 		fuelType: 'diesel',
-		seats: 9, // 8+1
+		seats: 9,
 		features: '9 мест, Кондиционер в салоне, USB у каждого места',
 		imageUrl: '/images/cars/sollers-atlant-bus.webp'
 	}
@@ -310,7 +296,7 @@ async function main() {
 
 		for (const item of CARS_DATA) {
 			await db.insert(schema.car).values({
-				id: randomUUID(), // Генерируем ID
+				id: randomUUID(),
 				...item,
 				category: item.category as 'passenger' | 'cargo',
 				transmission: item.transmission as 'automatic' | 'manual',
