@@ -7,7 +7,7 @@ export const user = sqliteTable('user', {
 	passwordHash: text('password_hash').notNull(),
 	role: text('role').$type<'user' | 'admin'>().default('user').notNull(),
 	createdAt: integer('created_at', { mode: 'timestamp' })
-		.default(sql`(CURRENT_TIMESTAMP)`)
+		.$defaultFn(() => new Date())
 		.notNull()
 });
 
@@ -38,7 +38,7 @@ export const car = sqliteTable('car', {
 		.default('available')
 		.notNull(),
 	createdAt: integer('created_at', { mode: 'timestamp' })
-		.default(sql`(CURRENT_TIMESTAMP)`)
+		.$defaultFn(() => new Date())
 		.notNull()
 });
 
@@ -58,7 +58,7 @@ export const booking = sqliteTable('booking', {
 		.default('pending')
 		.notNull(),
 	createdAt: integer('created_at', { mode: 'timestamp' })
-		.default(sql`(CURRENT_TIMESTAMP)`)
+		.$defaultFn(() => new Date())
 		.notNull()
 });
 

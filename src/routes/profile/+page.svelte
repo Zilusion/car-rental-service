@@ -1,147 +1,111 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
+	import { Avatar, AvatarFallback } from '$lib/components/ui/avatar';
 	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { CalendarDays, Clock, Ban, CheckCircle2, Loader2 } from '@lucide/svelte';
+	import {
+		Card,
+		CardContent,
+		CardHeader,
+		CardTitle,
+		CardDescription
+	} from '$lib/components/ui/card';
+	import { Input } from '$lib/components/ui/input';
+	import { Label } from '$lib/components/ui/label';
+	import { Separator } from '$lib/components/ui/separator';
+	import { Badge } from '$lib/components/ui/badge';
+	import { Trophy, Wallet, History } from '@lucide/svelte';
 	import { resolve } from '$app/paths';
 
 	let { data }: { data: PageData } = $props();
-	let { bookings } = $derived(data); // Делаем bookings реактивным от data
+	let { user, stats } = data;
 
-	const formatPrice = (price: number) => (price / 100).toLocaleString('ru-RU');
-	const formatDate = (date: Date | string | number) => {
-		const d = new Date(date);
-		if (isNaN(d.getTime())) return '...';
-		return new Intl.DateTimeFormat('ru-RU', {
-			day: 'numeric',
-			month: 'long',
-			year: 'numeric'
-		}).format(d);
+	// Геймификация статуса
+	const getLevel = (rides: number) => {
+		if (rides > 10) return { title: 'Шумахер', color: 'bg-red-500' };
+		if (rides > 3) return { title: 'Опытный драйвер', color: 'bg-indigo-500' };
+		return { title: 'Новичок', color: 'bg-emerald-500' };
 	};
 
-	const getStatusConfig = (status: string) => {
-		switch (status) {
-			case 'confirmed':
-				return {
-					label: 'Активно',
-					color: 'bg-emerald-100 text-emerald-700 border-emerald-200',
-					icon: CheckCircle2
-				};
-			case 'cancelled':
-				return { label: 'Отменено', color: 'bg-red-100 text-red-700 border-red-200', icon: Ban };
-			case 'completed':
-				return {
-					label: 'Завершено',
-					color: 'bg-zinc-100 text-zinc-700 border-zinc-200',
-					icon: CheckCircle2
-				};
-			default:
-				return {
-					label: 'Обработка',
-					color: 'bg-amber-100 text-amber-700 border-amber-200',
-					icon: Clock
-				};
-		}
-	};
-
-	// Состояние загрузки для конкретной кнопки
-	let cancelingId = $state<string | null>(null);
+	let level = $derived(getLevel(stats.count));
 </script>
 
-<div class="container mx-auto py-10 px-4 max-w-4xl">
-	<div class="mb-10">
-		<h1 class="text-3xl font-bold tracking-tight mb-2">Мои поездки</h1>
-		<p class="text-zinc-500">Управляйте своими бронированиями</p>
+<div class="container mx-auto py-10 px-4 max-w-3xl">
+	<div class="flex items-center gap-6 mb-8">
+		<Avatar class="h-24 w-24 border-4 border-white shadow-xl">
+			<AvatarFallback class="text-2xl font-bold bg-zinc-900 text-white">
+				{user.username.slice(0, 2).toUpperCase()}
+			</AvatarFallback>
+		</Avatar>
+		<div>
+			<h1 class="text-3xl font-black text-zinc-900 flex items-center gap-3 dark:text-white">
+				{user.username}
+				<Badge class="{level.color} hover:{level.color} text-white border-none shadow-sm">
+					{level.title}
+				</Badge>
+			</h1>
+			<p class="text-zinc-500">ID пилота: {user.id}</p>
+		</div>
 	</div>
 
-	{#if bookings.length === 0}
-		<!-- Empty State (тот же) -->
-		<div class="text-center py-20 bg-zinc-50 rounded-3xl border border-dashed border-zinc-200">
-			<CalendarDays class="mx-auto w-12 h-12 text-zinc-300 mb-4" />
-			<h3 class="text-lg font-medium text-zinc-900">Пока пусто</h3>
-			<Button href={resolve('/')} variant="default" class="mt-4">Найти машину</Button>
-		</div>
-	{:else}
-		<div class="space-y-6">
-			{#each bookings as booking (booking.id)}
-				{@const status = getStatusConfig(booking.status)}
+	<div class="grid gap-6 md:grid-cols-2 mb-8">
+		<!-- Статистика -->
+		<Card class="border-none shadow-lg bg-linear-to-br from-zinc-900 to-zinc-800 text-white">
+			<CardHeader class="pb-2">
+				<CardTitle class="text-lg font-medium text-zinc-300 flex items-center gap-2">
+					<Wallet class="w-4 h-4" /> Потрачено
+				</CardTitle>
+			</CardHeader>
+			<CardContent>
+				<div class="text-3xl font-bold">
+					{((stats.totalSpent || 0) / 100).toLocaleString('ru-RU')} ₽
+				</div>
+				<p class="text-xs text-zinc-400 mt-1">Инвестиции в эмоции</p>
+			</CardContent>
+		</Card>
 
-				<Card.Root class="overflow-hidden hover:shadow-md transition-shadow">
-					<div class="flex flex-col md:flex-row">
-						<!-- Фото -->
-						<div
-							class="w-full md:w-64 h-48 md:h-auto bg-zinc-50 flex items-center justify-center p-4 shrink-0"
-						>
-							<img
-								src={booking.car.imageUrl}
-								alt={booking.car.model}
-								class="w-full h-full object-contain mix-blend-multiply"
-							/>
-						</div>
+		<Card class="border-none shadow-lg bg-white">
+			<CardHeader class="pb-2">
+				<CardTitle class="text-lg font-medium text-zinc-500 flex items-center gap-2">
+					<Trophy class="w-4 h-4 text-amber-500" /> Поездок
+				</CardTitle>
+			</CardHeader>
+			<CardContent>
+				<div class="text-3xl font-bold text-zinc-900">
+					{stats.count}
+				</div>
+				<p class="text-xs text-zinc-400 mt-1">Километры свободы</p>
+			</CardContent>
+		</Card>
+	</div>
 
-						<!-- Инфо -->
-						<div class="flex-1 p-6 flex flex-col">
-							<div class="flex justify-between items-start mb-4">
-								<div>
-									<h3 class="text-xl font-bold">{booking.car.brand} {booking.car.model}</h3>
-									<div class="text-sm text-zinc-500">№ заказа {booking.id.slice(0, 8)}</div>
-								</div>
-								<div
-									class={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${status.color}`}
-								>
-									<status.icon class="w-3.5 h-3.5" />
-									{status.label}
-								</div>
-							</div>
+	<!-- Настройки (Визуальные) -->
+	<Card>
+		<CardHeader>
+			<CardTitle>Личные данные</CardTitle>
+			<CardDescription>Здесь можно поменять данные, но пока нельзя.</CardDescription>
+		</CardHeader>
+		<CardContent class="space-y-4">
+			<div class="grid gap-2">
+				<Label>Имя пользователя</Label>
+				<Input value={user.username} disabled class="bg-zinc-50" />
+			</div>
+			<div class="grid gap-2">
+				<Label>Роль</Label>
+				<Input
+					value={user.role === 'admin' ? 'Властелин колец' : 'Водитель'}
+					disabled
+					class="bg-zinc-50"
+				/>
+			</div>
 
-							<div class="grid grid-cols-2 gap-4 mb-6 text-sm">
-								<div>
-									<div class="text-zinc-400 text-xs uppercase font-semibold">Период</div>
-									<div class="font-medium">
-										{formatDate(booking.startDate)} — {formatDate(booking.endDate)}
-									</div>
-								</div>
-								<div>
-									<div class="text-zinc-400 text-xs uppercase font-semibold">Сумма</div>
-									<div class="font-medium">{formatPrice(booking.totalPrice)} ₽</div>
-								</div>
-							</div>
+			<Separator class="my-4" />
 
-							<!-- Кнопки -->
-							<div class="mt-auto pt-4 border-t flex justify-end">
-								{#if booking.status === 'confirmed' || booking.status === 'pending'}
-									<form
-										method="POST"
-										action="?/cancelBooking"
-										use:enhance={() => {
-											cancelingId = booking.id; // Включаем спиннер
-											return async ({ update }) => {
-												await update(); // Ждем обновления данных
-												cancelingId = null; // Выключаем спиннер
-											};
-										}}
-									>
-										<input type="hidden" name="bookingId" value={booking.id} />
-										<Button
-											type="submit"
-											variant="ghost"
-											disabled={cancelingId === booking.id}
-											class="text-red-600 hover:text-red-700 hover:bg-red-50"
-										>
-											{#if cancelingId === booking.id}
-												<Loader2 class="w-4 h-4 mr-2 animate-spin" /> Отменяем...
-											{:else}
-												Отменить бронирование
-											{/if}
-										</Button>
-									</form>
-								{/if}
-							</div>
-						</div>
-					</div>
-				</Card.Root>
-			{/each}
-		</div>
-	{/if}
+			<div class="flex justify-between items-center">
+				<div class="text-sm text-zinc-500">Хотите посмотреть историю?</div>
+				<Button href={resolve('/bookings')} variant="outline">
+					<History class="w-4 h-4 mr-2" /> История бронирований
+				</Button>
+			</div>
+		</CardContent>
+	</Card>
 </div>

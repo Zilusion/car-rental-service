@@ -42,6 +42,6 @@ export const actions: Actions = {
 			return fail(500, { error: 'Ошибка при создании брони' });
 		}
 
-		redirect(303, '/profile');
+		redirect(303, '/bookings');
 	}
 };

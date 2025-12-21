@@ -75,7 +75,7 @@
 						>твоего движения</span
 					>
 				</h1>
-				<p class="text-zinc-400 text-lg md:text-xl">
+				<p class="text-zinc-400 text-lg md:text-xl dark:text-white/80">
 					Арендуй премиальные авто и фургоны в Москве. Без залога, топливо и парковка включены.
 				</p>
 			</div>
@@ -187,8 +187,8 @@
 						<Sheet.Title>Фильтры</Sheet.Title>
 						<Sheet.Description>Настройте поиск под себя</Sheet.Description>
 					</Sheet.Header>
-					<div class="py-6 space-y-8">
-						<div class="space-y-4">
+					<div class="py-2 px-4 space-y-8">
+						<div class="space-y-2">
 							<Label>Цена</Label>
 							<Slider
 								type="multiple"
@@ -202,6 +202,63 @@
 								<span>{fmtPrice(priceRange[1])} ₽</span>
 							</div>
 						</div>
+						<div class="space-y-4">
+							<h3 class="font-medium text-sm">Коробка передач</h3>
+							<div class="flex flex-col gap-3">
+								<div class="flex items-center gap-2">
+									<Checkbox id="trans-auto" bind:checked={transmissionAuto} />
+									<Label for="trans-auto" class="font-normal">Автомат</Label>
+								</div>
+								<div class="flex items-center gap-2">
+									<Checkbox id="trans-manual" bind:checked={transmissionManual} />
+									<Label for="trans-manual" class="font-normal">Механика</Label>
+								</div>
+							</div>
+						</div>
+
+						<Separator />
+
+						<!-- Бренды (Accordion) -->
+						<Accordion.Root type="single" value="brands">
+							<Accordion.Item value="brands" class="border-b-0">
+								<Accordion.Trigger class="py-0 hover:no-underline font-medium text-sm">
+									Марки автомобилей
+								</Accordion.Trigger>
+								<Accordion.Content class="pt-4">
+									<div class="grid grid-cols-1 gap-2 max-h-60 overflow-y-auto pr-2">
+										{#each data.filters.brands as brand (brand)}
+											<div class="flex items-center gap-2">
+												<Checkbox
+													id="brand-{brand}"
+													checked={selectedBrands.includes(brand)}
+													onCheckedChange={() => toggleBrand(brand)}
+												/>
+												<Label
+													for="brand-{brand}"
+													class="font-normal cursor-pointer w-full"
+													onclick={() => toggleBrand(brand)}
+												>
+													{brand}
+												</Label>
+											</div>
+										{/each}
+									</div>
+								</Accordion.Content>
+							</Accordion.Item>
+						</Accordion.Root>
+
+						<Button
+							variant="outline"
+							class="w-full"
+							onclick={() => {
+								priceRange = [data.filters.minPrice, data.filters.maxPrice];
+								selectedBrands = [];
+								transmissionAuto = true;
+								transmissionManual = true;
+							}}
+						>
+							Сбросить все
+						</Button>
 						<!-- Можно добавить остальные фильтры сюда -->
 					</div>
 				</Sheet.Content>
@@ -225,8 +282,10 @@
 							<Gauge class="w-5 h-5" />
 						</div>
 						<div>
-							<h2 class="text-2xl font-bold text-zinc-900">Начинающим водителям</h2>
-							<p class="text-sm text-zinc-500">Доступно с 18 лет, стаж не требуется</p>
+							<h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Начинающим водителям</h2>
+							<p class="text-sm text-zinc-500 dark:text-white/80">
+								Доступно с 18 лет, стаж не требуется
+							</p>
 						</div>
 					</div>
 					<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -245,8 +304,8 @@
 							<CarFront class="w-5 h-5" />
 						</div>
 						<div>
-							<h2 class="text-2xl font-bold text-zinc-900">Комфорт</h2>
-							<p class="text-sm text-zinc-500">Повышенный комфорт, с 21 года</p>
+							<h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Комфорт</h2>
+							<p class="text-sm text-zinc-500 dark:text-white/80">Повышенный комфорт, с 21 года</p>
 						</div>
 					</div>
 					<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -265,8 +324,10 @@
 							<Briefcase class="w-5 h-5" />
 						</div>
 						<div>
-							<h2 class="text-2xl font-bold text-zinc-900">Бизнес и Премиум</h2>
-							<p class="text-sm text-zinc-500">Для ценителей, с 24 лет и стажем</p>
+							<h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Бизнес и Премиум</h2>
+							<p class="text-sm text-zinc-500 dark:text-white/80">
+								Для ценителей, с 24 лет и стажем
+							</p>
 						</div>
 					</div>
 					<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -285,8 +346,8 @@
 							<Truck class="w-5 h-5" />
 						</div>
 						<div>
-							<h2 class="text-2xl font-bold text-zinc-900">Для задач побольше</h2>
-							<p class="text-sm text-zinc-500">Фургоны и микроавтобусы</p>
+							<h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Для задач побольше</h2>
+							<p class="text-sm text-zinc-500 dark:text-white/80">Фургоны и микроавтобусы</p>
 						</div>
 					</div>
 					<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -305,16 +366,16 @@
 			<div class="p-2 bg-zinc-100 rounded-lg text-zinc-900">
 				<HelpCircle class="w-6 h-6" />
 			</div>
-			<h2 class="text-3xl font-bold text-zinc-900">Частые вопросы</h2>
+			<h2 class="text-3xl font-bold text-zinc-900 dark:text-white">Частые вопросы</h2>
 		</div>
 
-		<div class="max-w-3xl mx-auto bg-zinc-50 rounded-2xl p-6 md:p-8">
+		<div class="max-w-3xl mx-auto bg-zinc-50 rounded-2xl p-6 md:p-8 dark:bg-zinc-900 dark:text-white">
 			<Accordion.Root type="single" class="w-full">
 				<Accordion.Item value="item-1">
 					<Accordion.Trigger class="text-lg font-medium"
 						>Нужен ли залог для аренды?</Accordion.Trigger
 					>
-					<Accordion.Content class="text-zinc-500 leading-relaxed">
+					<Accordion.Content class="text-zinc-500 leading-relaxed dark:text-white/80">
 						Нет, в нашем сервисе отсутствует залог. Мы доверяем нашим клиентам. Оплата производится
 						только за фактическое время аренды или выбранный тариф.
 					</Accordion.Content>
@@ -323,7 +384,7 @@
 					<Accordion.Trigger class="text-lg font-medium"
 						>Что включено в стоимость?</Accordion.Trigger
 					>
-					<Accordion.Content class="text-zinc-500 leading-relaxed">
+					<Accordion.Content class="text-zinc-500 leading-relaxed dark:text-white/80">
 						В стоимость аренды уже включены: бензин (заправка по топливной карте), мойка,
 						техническое обслуживание и страховка ОСАГО. Парковка на городских платных парковках
 						Москвы также бесплатна.
@@ -333,7 +394,7 @@
 					<Accordion.Trigger class="text-lg font-medium"
 						>Какие требования к возрасту и стажу?</Accordion.Trigger
 					>
-					<Accordion.Content class="text-zinc-500 leading-relaxed">
+					<Accordion.Content class="text-zinc-500 leading-relaxed dark:text-white/80">
 						<ul>
 							<li><b>Эконом (начинающим):</b> от 18 лет, стаж не требуется.</li>
 							<li><b>Комфорт:</b> от 21 года, стаж от 2 лет.</li>
@@ -345,7 +406,7 @@
 					<Accordion.Trigger class="text-lg font-medium"
 						>Где можно завершить аренду?</Accordion.Trigger
 					>
-					<Accordion.Content class="text-zinc-500 leading-relaxed">
+					<Accordion.Content class="text-zinc-500 leading-relaxed dark:text-white/80">
 						Завершить аренду можно в пределах МКАД и в некоторых районах за его пределами
 						(отображаются в приложении зеленым цветом). Главное — парковаться по правилам ПДД на
 						открытых парковках.
