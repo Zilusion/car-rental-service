@@ -5,7 +5,6 @@
 
 	let { data }: { data: PageData } = $props();
 
-	// Форматирование цены
 	const formatPrice = (p: number) => (p / 100).toLocaleString('ru-RU');
 
 	const formatDate = (date: Date | string | number | null) => {
@@ -27,19 +26,17 @@
 		}
 	};
 
-	// Перевод статусов
 	const statusMap: Record<
 		string,
 		{ label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline' }
 	> = {
-		confirmed: { label: 'Подтверждено', variant: 'default' }, // Зеленый/Черный (в зависимости от темы)
+		confirmed: { label: 'Подтверждено', variant: 'default' },
 		pending: { label: 'Ожидает', variant: 'secondary' },
-		cancelled: { label: 'Отменено', variant: 'destructive' }, // Красный
+		cancelled: { label: 'Отменено', variant: 'destructive' },
 		completed: { label: 'Завершено', variant: 'outline' },
 		maintenance: { label: 'Ремонт', variant: 'destructive' }
 	};
 
-	// Функция для получения конфига статуса (с фоллбэком)
 	const getStatus = (status: string) => {
 		return statusMap[status] || { label: status, variant: 'outline' };
 	};
@@ -94,14 +91,14 @@
 								{formatPrice(booking.totalPrice)} ₽
 							</td>
 
-							<!-- Статус (с переводом) -->
+							<!-- Статус -->
 							<td class="px-6 py-4">
 								<Badge variant={statusConfig.variant}>
 									{statusConfig.label}
 								</Badge>
 							</td>
 
-							<!-- Дата (исправленная) -->
+							<!-- Дата -->
 							<td class="px-6 py-4 text-zinc-400 dark:text-zinc-500 whitespace-nowrap">
 								{formatDate(booking.createdAt)}
 							</td>

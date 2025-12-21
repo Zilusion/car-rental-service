@@ -30,7 +30,6 @@
 				<DropdownMenu.Root>
 					<DropdownMenu.Trigger>
 						<div class="flex items-center gap-3 cursor-pointer group">
-							<!-- Имя пользователя рядом с аватаркой для уюта -->
 							<span
 								class="hidden md:block text-sm font-medium text-zinc-700 group-hover:text-zinc-900 transition-colors dark:text-zinc-300 dark:group-hover:text-white"
 							>

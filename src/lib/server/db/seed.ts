@@ -25,7 +25,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Кондиционер, Bluetooth, Подогрев зеркал',
-		imageUrl: '/images/cars/vw-polo-vi.webp' // есть
+		imageUrl: '/images/cars/vw-polo-vi.webp'
 	},
 	{
 		brand: 'Skoda',
@@ -39,7 +39,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Мультимедиа, Подогрев сидений, USB-зарядка',
-		imageUrl: '/images/cars/skoda-rapid.webp' // есть
+		imageUrl: '/images/cars/skoda-rapid.webp'
 	},
 	{
 		brand: 'KIA',
@@ -53,7 +53,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Климат-контроль, Камера заднего вида, Apple CarPlay',
-		imageUrl: '/images/cars/kia-rio-x.webp' // есть
+		imageUrl: '/images/cars/kia-rio-x.webp'
 	},
 	{
 		brand: 'Chery',
@@ -67,7 +67,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Парктроники, Круиз-контроль, Обогрев руля',
-		imageUrl: '/images/cars/chery-tiggo-4.webp' // есть
+		imageUrl: '/images/cars/chery-tiggo-4.webp'
 	},
 	{
 		brand: 'Chery',
@@ -81,7 +81,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Панорамная крыша, Камера 360, Беспроводная зарядка',
-		imageUrl: '/images/cars/chery-tiggo-4-pro.webp' // есть
+		imageUrl: '/images/cars/chery-tiggo-4-pro.webp'
 	},
 
 	// --- КОМФОРТ (21/2) ---
@@ -97,7 +97,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Двухзонный климат, Навигация, Удержание в полосе',
-		imageUrl: '/images/cars/nissan-qashqai.webp' // есть
+		imageUrl: '/images/cars/nissan-qashqai.webp'
 	},
 	{
 		brand: 'Omoda',
@@ -111,7 +111,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Спортивные сиденья, Люк, Атмосферная подсветка',
-		imageUrl: '/images/cars/omoda-s5.webp' // есть
+		imageUrl: '/images/cars/omoda-s5.webp'
 	},
 	{
 		brand: 'Chery',
@@ -125,7 +125,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Кожаный салон, Электропривод багажника, Автозапуск',
-		imageUrl: '/images/cars/chery-tiggo-7-pro.webp' // есть
+		imageUrl: '/images/cars/chery-tiggo-7-pro.webp'
 	},
 	{
 		brand: 'Haval',
@@ -139,7 +139,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Проекция на стекло, Ассистент парковки, Android Auto',
-		imageUrl: '/images/cars/haval-jolion.webp' // есть
+		imageUrl: '/images/cars/haval-jolion.webp'
 	},
 	{
 		brand: 'Geely',
@@ -153,7 +153,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Большой багажник, Тихий салон, Климат-контроль',
-		imageUrl: '/images/cars/geely-emgrand.webp' // есть
+		imageUrl: '/images/cars/geely-emgrand.webp'
 	},
 	{
 		brand: 'Belgee',
@@ -167,7 +167,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Турбо-мотор, Спортивный режим, Панорама',
-		imageUrl: '/images/cars/belgee-x50.webp' // есть
+		imageUrl: '/images/cars/belgee-x50.webp'
 	},
 	{
 		brand: 'Geely',
@@ -181,7 +181,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Автопарковка, Видеорегистратор, Спортивный выхлоп',
-		imageUrl: '/images/cars/geely-coolray.webp' // есть
+		imageUrl: '/images/cars/geely-coolray.webp'
 	},
 
 	// --- ПРЕМИУМ / БИЗНЕС (24/4) ---
@@ -197,7 +197,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Премиум аудио Sony, Голосовое управление, Полный привод',
-		imageUrl: '/images/cars/exeed-lx-fl.webp' // есть
+		imageUrl: '/images/cars/exeed-lx-fl.webp'
 	},
 	{
 		brand: 'Exeed',
@@ -211,7 +211,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Двойные стекла, Ионизация воздуха, Face ID',
-		imageUrl: '/images/cars/exeed-lx.webp' // есть
+		imageUrl: '/images/cars/exeed-lx.webp'
 	},
 	{
 		brand: 'Toyota',
@@ -225,7 +225,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Легендарная надежность, Safety Sense, Off-road режим',
-		imageUrl: '/images/cars/toyota-rav4.webp' // есть
+		imageUrl: '/images/cars/toyota-rav4.webp'
 	},
 	{
 		brand: 'Omoda',
@@ -239,7 +239,7 @@ const CARS_DATA = [
 		fuelType: 'petrol',
 		seats: 5,
 		features: 'Футуристичный дизайн, Акустика, Вентиляция сидений',
-		imageUrl: '/images/cars/omoda-c5.webp' // есть
+		imageUrl: '/images/cars/omoda-c5.webp'
 	},
 
 	// --- ГРУЗОВЫЕ / СПЕЦ ---

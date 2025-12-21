@@ -14,6 +14,7 @@
 	</div>
 
 	<div class="grid md:grid-cols-3 gap-8">
+    <!-- Телепортация  -->
 		<div
 			class="border rounded-3xl p-8 flex flex-col hover:shadow-xl transition-shadow bg-zinc-50 opacity-75"
 		>
@@ -30,7 +31,7 @@
 			<Button disabled variant="outline" class="w-full rounded-xl dark:text-black">В разработке</Button>
 		</div>
 
-		<!-- Суточный (Акцент) -->
+		<!-- Суточный  -->
 		<div
 			class="border-2 border-indigo-600 rounded-3xl p-8 flex flex-col relative bg-indigo-50/50 transform md:-translate-y-4 shadow-2xl shadow-indigo-200/50"
 		>

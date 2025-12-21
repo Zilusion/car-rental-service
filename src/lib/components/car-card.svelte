@@ -2,26 +2,24 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import type { Car } from '$lib/server/db/schema'; // Импортируем тип машины
+	import type { Car } from '$lib/server/db/schema';
 
-	// Svelte 5 Props
 	let { car }: { car: Car } = $props();
 
-	// Форматтер цены
 	const formatPrice = (price: number) => (price / 100).toLocaleString('ru-RU');
 </script>
 
 <Card.Root
 	class="group overflow-hidden border-none shadow-sm hover:shadow-xl transition-all duration-300 bg-white dark:bg-zinc-900 rounded-3xl flex flex-col h-full"
 >
-	<!-- Картинка: Делаем эффект приближения при наведении -->
+	<!-- Картинка -->
 	<div class="relative h-56 w-full bg-zinc-50 overflow-hidden flex items-center justify-center">
 		<img
 			src={car.imageUrl}
 			alt="{car.brand} {car.model}"
 			class="w-auto h-full max-w-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
 		/>
-		<!-- Год выпуска сверху -->
+		<!-- Год выпуска  -->
 		<div class="absolute top-4 left-4">
 			<Badge variant="secondary" class="bg-white/80 backdrop-blur text-xs font-medium">
 				{car.year}
@@ -61,7 +59,6 @@
 	</Card.Content>
 
 	<!-- Кнопка действия -->
-	<!-- Важно: в SvelteKit переходы делают через обычный <a> с prefetch -->
 	<div class="p-6 pt-0">
 		<Button
 			href="/cars/{car.id}"

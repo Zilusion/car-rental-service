@@ -47,7 +47,7 @@ export const actions: Actions = {
 
 		return redirect(302, '/');
 	},
-	// Экшн выхода тоже здесь, чтобы работал из хедера
+
 	logout: async (event) => {
 		if (!event.locals.session) return fail(401);
 		await auth.invalidateSession(event.locals.session.id);

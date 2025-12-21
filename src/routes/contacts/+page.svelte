@@ -52,12 +52,11 @@
 			<Button size="lg" class="bg-zinc-900 text-white rounded-xl mt-4">Построить маршрут</Button>
 		</div>
 
-		<!-- Фейковая карта (картинка или блок) -->
+		<!-- Фейковая карта  -->
 		<div
 			class="bg-zinc-200 w-full h-[400px] rounded-3xl overflow-hidden relative shadow-inner flex items-center justify-center"
 		>
 			<div class="text-zinc-400 font-bold text-2xl animate-pulse">[Здесь могла быть карта]</div>
-			<!-- Можно вставить iframe яндекс карт, но для курсача и заглушки хватит или статики -->
 		</div>
 	</div>
 </div>

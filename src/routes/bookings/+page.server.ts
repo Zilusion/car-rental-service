@@ -5,13 +5,10 @@ import * as table from '$lib/server/db/schema';
 import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
-	// 1. Защита маршрута: только авторизованные
 	if (!locals.user) {
 		return redirect(302, '/login');
 	}
 
-	// 2. Получаем список бронирований текущего пользователя
-	// Нам нужно объединить таблицу booking и car, чтобы показать фото и название машины
 	const bookings = await db
 		.select({
 			id: table.booking.id,
@@ -29,7 +26,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 		.from(table.booking)
 		.innerJoin(table.car, eq(table.booking.carId, table.car.id))
 		.where(eq(table.booking.userId, locals.user.id))
-		.orderBy(desc(table.booking.createdAt)); // Сначала новые
+		.orderBy(desc(table.booking.createdAt));
 
 	return {
 		bookings
@@ -37,7 +34,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 };
 
 export const actions: Actions = {
-	// Действие для отмены бронирования
 	cancelBooking: async ({ request, locals }) => {
 		if (!locals.user) return fail(401);
 
@@ -47,7 +43,6 @@ export const actions: Actions = {
 		if (!bookingId) return fail(400);
 
 		try {
-			// Обновляем статус, но только если бронь принадлежит этому юзеру
 			await db
 				.update(table.booking)
 				.set({ status: 'cancelled' })

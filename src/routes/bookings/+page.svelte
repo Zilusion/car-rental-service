@@ -7,7 +7,7 @@
 	import { resolve } from '$app/paths';
 
 	let { data }: { data: PageData } = $props();
-	let { bookings } = $derived(data); // Делаем bookings реактивным от data
+	let { bookings } = $derived(data);
 
 	const formatPrice = (price: number) => (price / 100).toLocaleString('ru-RU');
 	const formatDate = (date: Date | string | number) => {
@@ -45,7 +45,6 @@
 		}
 	};
 
-	// Состояние загрузки для конкретной кнопки
 	let cancelingId = $state<string | null>(null);
 </script>
 
@@ -56,7 +55,6 @@
 	</div>
 
 	{#if bookings.length === 0}
-		<!-- Empty State (тот же) -->
 		<div class="text-center py-20 bg-zinc-50 rounded-3xl border border-dashed border-zinc-200">
 			<CalendarDays class="mx-auto w-12 h-12 text-zinc-300 mb-4" />
 			<h3 class="text-lg font-medium text-zinc-900">Пока пусто</h3>
@@ -115,10 +113,10 @@
 										method="POST"
 										action="?/cancelBooking"
 										use:enhance={() => {
-											cancelingId = booking.id; // Включаем спиннер
+											cancelingId = booking.id;
 											return async ({ update }) => {
-												await update(); // Ждем обновления данных
-												cancelingId = null; // Выключаем спиннер
+												await update();
+												cancelingId = null;
 											};
 										}}
 									>

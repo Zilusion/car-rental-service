@@ -57,7 +57,7 @@
 </script>
 
 <div class="container mx-auto py-8 px-4 max-w-7xl">
-	<!-- PROMO HERO SECTION -->
+	<!-- ПРОМО СЕКЦИЯ -->
 	<section class="relative overflow-hidden rounded-3xl bg-zinc-900 text-white mb-12 shadow-2xl">
 		<div
 			class="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-indigo-900/20 to-transparent"
@@ -79,7 +79,6 @@
 					Арендуй премиальные авто и фургоны в Москве. Без залога, топливо и парковка включены.
 				</p>
 			</div>
-			<!-- Декоративный элемент -->
 			<div class="hidden md:block">
 				<CarFront class="w-64 h-64 text-white" />
 			</div>
@@ -87,7 +86,7 @@
 	</section>
 
 	<div class="flex flex-col lg:flex-row gap-10">
-		<!-- SIDEBAR FILTERS (Desktop) -->
+		<!-- ФИЛЬТРЫ (Desktop) -->
 		<aside class="hidden lg:block w-72 shrink-0 space-y-8 sticky top-24 h-fit">
 			<div class="flex items-center gap-2 font-bold text-xl">
 				<Settings2 class="w-5 h-5" /> Фильтры
@@ -131,7 +130,7 @@
 
 			<Separator />
 
-			<!-- Бренды (Accordion) -->
+			<!-- Бренды  -->
 			<Accordion.Root type="single" value="brands">
 				<Accordion.Item value="brands" class="border-b-0">
 					<Accordion.Trigger class="py-0 hover:no-underline font-medium text-sm">
@@ -174,7 +173,7 @@
 			</Button>
 		</aside>
 
-		<!-- MOBILE FILTER TRIGGER -->
+		<!-- ФИЛЬТРЫ (Mobile) -->
 		<div class="lg:hidden mb-6">
 			<Sheet.Root>
 				<Sheet.Trigger>
@@ -218,7 +217,7 @@
 
 						<Separator />
 
-						<!-- Бренды (Accordion) -->
+						<!-- Бренды  -->
 						<Accordion.Root type="single" value="brands">
 							<Accordion.Item value="brands" class="border-b-0">
 								<Accordion.Trigger class="py-0 hover:no-underline font-medium text-sm">
@@ -259,13 +258,12 @@
 						>
 							Сбросить все
 						</Button>
-						<!-- Можно добавить остальные фильтры сюда -->
 					</div>
 				</Sheet.Content>
 			</Sheet.Root>
 		</div>
 
-		<!-- CAR LISTINGS -->
+		<!-- КАРТОЧКИ -->
 		<div class="flex-1 space-y-16">
 			{#if filteredCars.length === 0}
 				<div class="text-center py-20 bg-zinc-50 rounded-3xl">
@@ -360,7 +358,7 @@
 		</div>
 	</div>
 
-	<!-- FAQ SECTION (НОВЫЙ БЛОК) -->
+	<!-- ЧаВО -->
 	<section class="mt-24 mb-12">
 		<div class="flex items-center gap-3 mb-8 justify-center">
 			<div class="p-2 bg-zinc-100 rounded-lg text-zinc-900">

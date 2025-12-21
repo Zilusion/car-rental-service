@@ -20,7 +20,6 @@
 		end: today(getLocalTimeZone()).add({ days: 1 })
 	});
 
-	// Расчет дней и цены
 	let days = $derived.by(() => {
 		if (!value.start || !value.end) return 0;
 		const start = value.start.toDate(getLocalTimeZone());
@@ -33,10 +32,9 @@
 	let totalPrice = $derived(days * car.pricePerDay);
 	const formatPrice = (p: number) => (p / 100).toLocaleString('ru-RU');
 
-	// Функция для конвертации CalendarDate в строку ISO (YYYY-MM-DD) для формы
 	function formatIsoDate(date: DateValue | undefined) {
 		if (!date) return '';
-		return date.toString(); // CalendarDate.toString() возвращает YYYY-MM-DD
+		return date.toString();
 	}
 </script>
 

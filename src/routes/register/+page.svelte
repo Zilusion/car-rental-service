@@ -18,7 +18,7 @@
 		</Card.Header>
 		<Card.Content>
 			<form method="POST" action="?/register" use:enhance class="space-y-4">
-				<!-- Username -->
+				<!-- Имя пользователя -->
 				<div class="space-y-2">
 					<Label for="username">Имя пользователя</Label>
 					<Input 
@@ -31,7 +31,7 @@
 					/>
 				</div>
 
-				<!-- Password -->
+				<!-- Пароль -->
 				<div class="space-y-2">
 					<Label for="password">Пароль</Label>
 					<Input 
@@ -43,7 +43,7 @@
 					/>
 				</div>
 
-				<!-- Confirm Password -->
+				<!-- Подтверждение пароля -->
 				<div class="space-y-2">
 					<Label for="confirm-password">Повторите пароль</Label>
 					<Input 
@@ -69,7 +69,7 @@
 		</Card.Content>
 		<Card.Footer class="justify-center">
 			<p class="text-sm text-muted-foreground">
-				Уже есть аккаунт? <a href={resolve("/login")} class="text-primary hover:underline font-medium text-indigo-600">Войти</a>
+				Уже есть аккаунт? <a href={resolve("/login")} class="text-primary hover:underline font-medium">Войти</a>
 			</p>
 		</Card.Footer>
 	</Card.Root>

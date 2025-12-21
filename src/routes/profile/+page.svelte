@@ -19,7 +19,6 @@
 	let { data }: { data: PageData } = $props();
 	let { user, stats } = data;
 
-	// Геймификация статуса
 	const getLevel = (rides: number) => {
 		if (rides > 10) return { title: 'Шумахер', color: 'bg-red-500' };
 		if (rides > 3) return { title: 'Опытный драйвер', color: 'bg-indigo-500' };
@@ -78,7 +77,7 @@
 		</Card>
 	</div>
 
-	<!-- Настройки (Визуальные) -->
+	<!-- Настройки  -->
 	<Card>
 		<CardHeader>
 			<CardTitle>Личные данные</CardTitle>

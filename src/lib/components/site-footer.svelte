@@ -71,7 +71,7 @@
 				</ul>
 			</div>
 
-			<!-- Колонка 3: Помощь (с пасхалками) -->
+			<!-- Колонка 3: Помощь  -->
 			<div>
 				<h4 class="text-white font-bold mb-6">Инфо</h4>
 				<ul class="space-y-4 text-sm">
