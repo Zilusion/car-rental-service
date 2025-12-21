@@ -1,38 +1,48 @@
-# sv
+# Веб-сервис аренды автомобилей
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Курсовой проект.
 
-## Creating a project
+## Технологический стек
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework:** SvelteKit (Svelte 5 Runes)
+- **Стилизация:** TailwindCSS + Shadcn-Svelte
+- **ДБ:** SQLite
+- **ORM:** Drizzle ORM
+- **Аутентификация:** Custom session based (Lucia-like logic)
 
-```sh
-# create a new project in the current directory
-npx sv create
+## Функционал
 
-# create a new project in my-app
-npx sv create my-app
-```
+- Каталог автомобилей с фильтрацией (цена, класс, бренд).
+- Детальная страница автомобиля с характеристиками.
+- Система бронирования с выбором дат (Range Calendar).
+- Личный кабинет пользователя (история, статус, статистика).
+- Админ-панель для управления заказами.
+- Темная/Светлая тема.
 
-## Developing
+## Установка и запуск
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1. Установить зависимости:
 
-```sh
-npm run dev
+   ```bash
+   pnpm install
+   ```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+2. Подготовить базу данных (создание таблиц и наполнение данными):
 
-## Building
+   ```bash
+   pnpm db:push
+   pnpm db:seed
+   ```
 
-To create a production version of your app:
+3. Запустить сервер разработки:
 
-```sh
-npm run build
-```
+   ```bash
+   pnpm dev
+   ```
 
-You can preview the production build with `npm run preview`.
+4. Открыть в браузере: `http://localhost:5173`
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Аккаунты для проверки
+
+- **Администратор:** (создайте вручную)
+- **Пользователь:** Регистрируется самостоятельно.
