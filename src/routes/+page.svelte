@@ -10,17 +10,17 @@
 	import * as Sheet from '$lib/components/ui/sheet';
 	import * as Accordion from '$lib/components/ui/accordion';
 
-	import { Settings2, CarFront, Gauge, Briefcase, Truck } from '@lucide/svelte';
+	import { Settings2, CarFront, Gauge, Briefcase, Truck, HelpCircle } from '@lucide/svelte';
 
 	let { data }: { data: PageData } = $props();
 
+	// --- СОСТОЯНИЕ ФИЛЬТРОВ ---
 	let priceRange = $state([data.filters.minPrice, data.filters.maxPrice]);
-
 	let selectedBrands: string[] = $state([]);
-
 	let transmissionAuto = $state(true);
 	let transmissionManual = $state(true);
 
+	// --- ЛОГИКА ФИЛЬТРАЦИИ ---
 	let filteredCars = $derived(
 		data.cars.filter((car) => {
 			const inPrice = car.pricePerDay >= priceRange[0] && car.pricePerDay <= priceRange[1];
@@ -79,7 +79,7 @@
 					Арендуй премиальные авто и фургоны в Москве. Без залога, топливо и парковка включены.
 				</p>
 			</div>
-			<!-- Декоративный элемент (можно вставить 3D картинку машины сюда) -->
+			<!-- Декоративный элемент -->
 			<div class="hidden md:block">
 				<CarFront class="w-64 h-64 text-white" />
 			</div>
@@ -188,7 +188,6 @@
 						<Sheet.Description>Настройте поиск под себя</Sheet.Description>
 					</Sheet.Header>
 					<div class="py-6 space-y-8">
-						<!-- Копия фильтров для мобилки (упрощенно) -->
 						<div class="space-y-4">
 							<Label>Цена</Label>
 							<Slider
@@ -203,7 +202,7 @@
 								<span>{fmtPrice(priceRange[1])} ₽</span>
 							</div>
 						</div>
-						<!-- Остальные фильтры аналогично... -->
+						<!-- Можно добавить остальные фильтры сюда -->
 					</div>
 				</Sheet.Content>
 			</Sheet.Root>
@@ -299,4 +298,60 @@
 			{/if}
 		</div>
 	</div>
+
+	<!-- FAQ SECTION (НОВЫЙ БЛОК) -->
+	<section class="mt-24 mb-12">
+		<div class="flex items-center gap-3 mb-8 justify-center">
+			<div class="p-2 bg-zinc-100 rounded-lg text-zinc-900">
+				<HelpCircle class="w-6 h-6" />
+			</div>
+			<h2 class="text-3xl font-bold text-zinc-900">Частые вопросы</h2>
+		</div>
+
+		<div class="max-w-3xl mx-auto bg-zinc-50 rounded-2xl p-6 md:p-8">
+			<Accordion.Root type="single" class="w-full">
+				<Accordion.Item value="item-1">
+					<Accordion.Trigger class="text-lg font-medium"
+						>Нужен ли залог для аренды?</Accordion.Trigger
+					>
+					<Accordion.Content class="text-zinc-500 leading-relaxed">
+						Нет, в нашем сервисе отсутствует залог. Мы доверяем нашим клиентам. Оплата производится
+						только за фактическое время аренды или выбранный тариф.
+					</Accordion.Content>
+				</Accordion.Item>
+				<Accordion.Item value="item-2">
+					<Accordion.Trigger class="text-lg font-medium"
+						>Что включено в стоимость?</Accordion.Trigger
+					>
+					<Accordion.Content class="text-zinc-500 leading-relaxed">
+						В стоимость аренды уже включены: бензин (заправка по топливной карте), мойка,
+						техническое обслуживание и страховка ОСАГО. Парковка на городских платных парковках
+						Москвы также бесплатна.
+					</Accordion.Content>
+				</Accordion.Item>
+				<Accordion.Item value="item-3">
+					<Accordion.Trigger class="text-lg font-medium"
+						>Какие требования к возрасту и стажу?</Accordion.Trigger
+					>
+					<Accordion.Content class="text-zinc-500 leading-relaxed">
+						<ul>
+							<li><b>Эконом (начинающим):</b> от 18 лет, стаж не требуется.</li>
+							<li><b>Комфорт:</b> от 21 года, стаж от 2 лет.</li>
+							<li><b>Бизнес и Премиум:</b> от 24 лет, стаж от 4 лет.</li>
+						</ul>
+					</Accordion.Content>
+				</Accordion.Item>
+				<Accordion.Item value="item-4">
+					<Accordion.Trigger class="text-lg font-medium"
+						>Где можно завершить аренду?</Accordion.Trigger
+					>
+					<Accordion.Content class="text-zinc-500 leading-relaxed">
+						Завершить аренду можно в пределах МКАД и в некоторых районах за его пределами
+						(отображаются в приложении зеленым цветом). Главное — парковаться по правилам ПДД на
+						открытых парковках.
+					</Accordion.Content>
+				</Accordion.Item>
+			</Accordion.Root>
+		</div>
+	</section>
 </div>
