@@ -1,7 +1,8 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	
+	import SiteHeader from '$lib/components/site-header.svelte';
+
 	let { children } = $props();
 </script>
 
@@ -9,4 +10,8 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children()}
+<SiteHeader />
+
+<main class="min-h-screen">
+	{@render children()}
+</main>
