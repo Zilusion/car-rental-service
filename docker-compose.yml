@@ -1,0 +1,27 @@
+services:
+  app:
+    container_name: rental-app
+    build: .
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+      - ORIGIN=${APP_ORIGIN}
+      - ADDRESS_HEADER=X-Forwarded-For
+      - XFF_DEPTH=1
+      - DATABASE_URL=/app/db/data.db
+      - BODY_SIZE_LIMIT=Infinity
+    volumes:
+      - rental_db_data:/app/db
+
+    command: sh -c "pnpm db:migrate && pnpm db:seed && node build"
+
+networks:
+  default:
+    name: proxy-net
+    external: true
+
+volumes:
+  rental_db_data:

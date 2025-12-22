@@ -367,7 +367,9 @@
 			<h2 class="text-3xl font-bold text-zinc-900 dark:text-white">Частые вопросы</h2>
 		</div>
 
-		<div class="max-w-3xl mx-auto bg-zinc-50 rounded-2xl p-6 md:p-8 dark:bg-zinc-900 dark:text-white">
+		<div
+			class="max-w-3xl mx-auto bg-zinc-50 rounded-2xl p-6 md:p-8 dark:bg-zinc-900 dark:text-white"
+		>
 			<Accordion.Root type="single" class="w-full">
 				<Accordion.Item value="item-1">
 					<Accordion.Trigger class="text-lg font-medium"
